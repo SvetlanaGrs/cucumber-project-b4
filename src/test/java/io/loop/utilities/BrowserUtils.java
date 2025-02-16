@@ -1,9 +1,9 @@
 package io.loop.utilities;
 
+import io.cucumber.java.Scenario;
 import org.junit.Assert;
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.*;
+
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
@@ -12,6 +12,25 @@ import java.time.Duration;
 import java.util.Set;
 
 public class BrowserUtils {
+
+    public static Scenario myScenario;
+    /**
+     * takes screenshot
+     * @author Svetlana
+     */
+    public static void takeScreenshot(){
+        try{
+            myScenario.log("Current url is: " + Driver.getDriver().getCurrentUrl());
+            final byte [] screenshot = ((TakesScreenshot)Driver.getDriver()).getScreenshotAs(OutputType.BYTES);
+            myScenario.attach(screenshot, "image/png", myScenario.getName());
+        }catch (WebDriverException wbd){
+            wbd.getMessage();
+        }catch (ClassCastException cce){
+            cce.getMessage();
+        }
+    }
+
+
     /**
      * validate if driver switched to expected url or title
      * @param driver
@@ -75,35 +94,33 @@ public class BrowserUtils {
      * @author nsh
      */
 
-    public static WebElement waitForClickable (WebElement element, Integer timeout){
+
+    public static WebElement waitForClickable(WebElement element, int timeout) {
         WebDriverWait wait = new WebDriverWait(Driver.getDriver(), Duration.ofSeconds(timeout));
         return wait.until(ExpectedConditions.elementToBeClickable(element));
     }
 
-    /**
-     * waits for the provided element to be invisible on the page
-     * @param element
-     * @param timeToWaitInSec
-     * @author nsh
-     */
+        /**
+         * waits for the provided element to be invisible on the page
+         * @param element
+         * @param timeToWaitInSec
+         * @author nsh
+         */
+        public static void waitForInvisibility (WebElement element,int timeToWaitInSec){
+            WebDriverWait wait = new WebDriverWait(Driver.getDriver(), Duration.ofSeconds(timeToWaitInSec));
+            wait.until(ExpectedConditions.invisibilityOf(element));
+        }
 
-    public static void waitForInvisibility (WebElement element, Integer timeToWaitInSec){
-        WebDriverWait wait = new WebDriverWait(Driver.getDriver(), Duration.ofSeconds(timeToWaitInSec));
-        wait.until(ExpectedConditions.invisibilityOf(element));
+        /**
+         * waits for the provided element to be visible
+         * @param element
+         * @param timeToWaitSec
+         * @return
+         * @author nsh
+         */
+        public static WebElement waitForVisibility (WebElement element,int timeToWaitSec){
+            WebDriverWait wait = new WebDriverWait(Driver.getDriver(), Duration.ofSeconds(timeToWaitSec));
+            return wait.until(ExpectedConditions.visibilityOf(element));
+        }
     }
 
-    /**
-     * waits for the provided element to be visible
-     * @param element
-     * @param timeToWaitSec
-     * @return
-     * @author nsh
-     */
-
-    public static WebElement waitForVisibility (WebElement element, Integer timeToWaitSec){
-        WebDriverWait wait = new WebDriverWait(Driver.getDriver(), Duration.ofSeconds(timeToWaitSec));
-        return wait.until(ExpectedConditions.visibilityOf(element));
-    }
-
-
-}

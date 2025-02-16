@@ -25,22 +25,22 @@ public class DocuportUtils {
         switch (role.toLowerCase()){
             case "client":
                 username.sendKeys(DocuportConstance.USERNAME_CLIENT);
-                password.sendKeys(DocuportConstance.PASSWORD_CLIENT);
+                password.sendKeys(DocuportConstance.PASSWORD);
                 break;
 
             case "supervisor":
                 username.sendKeys(DocuportConstance.USERNAME_SUPERVISOR);
-                password.sendKeys(DocuportConstance.PASSWORD_CLIENT);
+                password.sendKeys(DocuportConstance.PASSWORD);
                 break;
 
             case "advisor":
                 username.sendKeys(DocuportConstance.USERNAME_ADVISOR);
-                password.sendKeys(DocuportConstance.PASSWORD_CLIENT);
+                password.sendKeys(DocuportConstance.PASSWORD);
                 break;
 
             case "employee":
                 username.sendKeys(DocuportConstance.USERNAME_EMPLOYEE);
-                password.sendKeys(DocuportConstance.PASSWORD_CLIENT);
+                password.sendKeys(DocuportConstance.PASSWORD);
                 break;
 
             default: throw new InterruptedException("There is not such a role: " + role);
