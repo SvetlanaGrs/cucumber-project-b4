@@ -59,8 +59,6 @@ public class GoogleSearchSteps {
             googleSearchPage.captcha.click();
         }
         Driver.getDriver().switchTo().defaultContent();
-
-     ;
     }
     @Then("user should see {string} in the Google title")
     public void user_should_see_in_the_google_title(String expectedTitle) {
