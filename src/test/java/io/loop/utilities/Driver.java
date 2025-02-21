@@ -30,8 +30,8 @@ public class Driver {
 
             switch (browserType.toLowerCase()){
                 case "chrome":
-                    //  ChromeOptions options = new ChromeOptions();
-                    //  options.addArguments("--incognito"); // Add the incognito argument here
+                      //ChromeOptions options = new ChromeOptions();
+                      //options.addArguments("--incognito"); // Add the incognito argument here
                     driver=new ChromeDriver(); //(options)
                     break;
                 case "firefox":
