@@ -10,7 +10,7 @@ import org.junit.runner.RunWith;
                  "json:target/json-reports/json-report.json"},
         features = "src/test/resources/features",
         glue ="io/loop/step_definitions",
-        dryRun = false,
+        dryRun = true,
         tags="@google_search_outline",
         monochrome=true
 )

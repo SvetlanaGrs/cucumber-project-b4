@@ -9,11 +9,11 @@ Feature: Scenario Outline Practice
 
 
     Examples:
-      | country    | capital        |
-      | Azerbaijan | Baku           |
-      | Ukraine    | Kyiv          |
-      | Afg        | Kabul          |
+      | country    | capital          |
+      | Azerbaijan | Baku             |
+      | Ukraine    | Kyiv             |
+      | Afg        | Kabul            |
       | USA        | Washington, D.C. |
-      | Turkiye    | Ankara         |
-      | Georgia    | Atlanta        |
+      | Turkiye    | Ankara           |
+      | Georgia    | Atlanta          |
 
