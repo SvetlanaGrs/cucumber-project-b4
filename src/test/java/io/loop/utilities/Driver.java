@@ -33,16 +33,21 @@ public class Driver {
                       //ChromeOptions options = new ChromeOptions();
                       //options.addArguments("--incognito"); // Add the incognito argument here
                     driver=new ChromeDriver(); //(options)
+                    driver.manage().window().maximize();
+                    driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
                     break;
                 case "firefox":
                     driver=new FirefoxDriver();
+                    driver.manage().window().maximize();
+                    driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
                     break;
                 case "safari":
                     driver=new SafariDriver();
+                    driver.manage().window().maximize();
+                    driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
                     break;
             }
-            driver.manage().window().maximize();
-            driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+
         }
         return driver;
     }
