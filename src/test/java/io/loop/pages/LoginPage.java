@@ -24,7 +24,7 @@ public class LoginPage {
     @FindBy(xpath = "//button[@type='submit']")
     public WebElement loginButton;
 
-    @FindBy (xpath = "//button[@type='submit']")
+    @FindBy (xpath = "//span[.=' Continue ']")
     public WebElement continueButton;
 
     public  void login(WebDriver driver, String role) throws InterruptedException {
@@ -70,6 +70,7 @@ public class LoginPage {
         usernameInput.sendKeys(username);
         passwordInput.clear();
         passwordInput.sendKeys(password);
+        loginButton.click();
         if (BrowserUtils.waitForVisibility(continueButton,10).isDisplayed()) {
             continueButton.click();
         }
