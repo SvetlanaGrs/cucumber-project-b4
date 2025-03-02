@@ -13,7 +13,7 @@ Feature: Docuport Login Logout Feature
     And user click login button
     Then user should be able to see the home for client
 
-  @smoke
+
   Scenario: Login as an employee
 
     When user enters username for employee
@@ -21,7 +21,7 @@ Feature: Docuport Login Logout Feature
     And user click login button
     Then user should be able to see the home for employee
 
-  @smoke
+
   Scenario: Login as an advisor
 
     When user enters username for advisor
@@ -29,7 +29,7 @@ Feature: Docuport Login Logout Feature
     And user click login button
     Then user should be able to see the home for advisor
 
-  @smoke
+
   Scenario: Login as an supervisor
 
     When user enters username for supervisor

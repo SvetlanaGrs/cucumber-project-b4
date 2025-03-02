@@ -15,7 +15,10 @@ public class Driver {
     static   -run before everything else and use in static method
      */
 
-    private static WebDriver driver;
+    //private static WebDriver driver;
+    //implement threadLocal to achieve multiThread local
+    private static InheritableThreadLocal <WebDriver> driverPool= new InheritableThreadLocal<>();
+
     /*
     reusable method that will return the same driver instance every time called
 
@@ -25,40 +28,41 @@ public class Driver {
      * @return
      */
     public static WebDriver getDriver(){
-        if(driver==null){
+        if(driverPool.get()==null){
             String browserType = ConfigurationReader.getProperties("browser");
 
             switch (browserType.toLowerCase()){
                 case "chrome":
                       //ChromeOptions options = new ChromeOptions();
                       //options.addArguments("--incognito"); // Add the incognito argument here
-                    driver=new ChromeDriver(); //(options)
-                    driver.manage().window().maximize();
-                    driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+                    driverPool.set(new ChromeDriver()); //(options)
+                    driverPool.get().manage().window().maximize();
+                    driverPool.get().manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
                     break;
                 case "firefox":
-                    driver=new FirefoxDriver();
-                    driver.manage().window().maximize();
-                    driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+                    driverPool.set(new FirefoxDriver());
+                    driverPool.get().manage().window().maximize();
+                    driverPool.get().manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
                     break;
                 case "safari":
-                    driver=new SafariDriver();
-                    driver.manage().window().maximize();
-                    driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+                    driverPool.set(new SafariDriver());
+                    driverPool.get().manage().window().maximize();
+                    driverPool.get().manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
                     break;
             }
 
         }
-        return driver;
+        return driverPool.get();
     }
     /**
      * closing driver
      * @author nsh
      */
     public static void closeDriver(){
-        if(driver!=null){
-            driver.quit();
-            driver=null;
+        if(driverPool.get()!=null){
+            driverPool.get().quit();
+            //driver=null;
+            driverPool.remove();
         }
     }
 }

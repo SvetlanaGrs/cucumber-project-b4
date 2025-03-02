@@ -8,39 +8,57 @@ import io.loop.utilities.BrowserUtils;
 import io.loop.utilities.ConfigurationReader;
 import io.loop.utilities.DocuportConstance;
 import io.loop.utilities.Driver;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+import org.openqa.selenium.support.ui.ExpectedCondition;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 import javax.print.Doc;
 
+import java.time.Duration;
 import java.util.Map;
 
 import static org.junit.Assert.assertTrue;
 
 public class LoginStepDefs {
     LoginPage loginPage = new LoginPage();
+    private static final Logger LOG = LogManager.getLogger();
 
     @Given("user is on Docuport login page")
     public void user_is_on_docuport_login_page() {
         Driver.getDriver().get(ConfigurationReader.getProperties("docuportBETA"));
+        LOG.info("User is on docuport login page");
+        BrowserUtils.takeScreenshot();
     }
     @When("user enters username for client")
     public void user_enters_username_for_client() {
         BrowserUtils.waitForClickable(loginPage.loginButton, DocuportConstance.EXTRA_LARGE);
         assertTrue("Login Button is NOT displayed", loginPage.loginButton.isDisplayed());
         loginPage.usernameInput.sendKeys(DocuportConstance.USERNAME_CLIENT);
-        loginPage.passwordInput.sendKeys(DocuportConstance.PASSWORD);
-        loginPage.loginButton.click();
+        BrowserUtils.takeScreenshot();
+        LOG.info("User enters user name");
+
     }
     @When("user enters password for client")
     public void user_enters_password_for_client() {
-
+        loginPage.passwordInput.sendKeys(DocuportConstance.PASSWORD);
+        BrowserUtils.takeScreenshot();
+        LOG.info("User enters password");
     }
     @When("user click login button")
     public void user_click_login_button() {
-
+        loginPage.loginButton.click();
+        BrowserUtils.takeScreenshot();
+        LOG.info("User clicks login button");
     }
     @Then("user should be able to see the home for client")
     public void user_should_be_able_to_see_the_home_for_client() {
-        assertTrue("Intentionally",true);
+        //WebDriverWait wait = new WebDriverWait(Driver.getDriver(), Duration.ofSeconds(10));
+        //wait.until(ExpectedConditions.elementToBeClickable(loginPage.continueButton));
+       // Driver.getDriver().manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+       // loginPage.continueButton.click();
+        BrowserUtils.takeScreenshot();
     }
 
     @When("user enters username for employee")
