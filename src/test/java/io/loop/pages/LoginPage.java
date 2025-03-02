@@ -24,7 +24,7 @@ public class LoginPage {
     @FindBy(xpath = "//button[@type='submit']")
     public WebElement loginButton;
 
-    @FindBy (xpath = "//span[.=' Continue ']")
+    @FindBy (xpath = "//button[@type='submit']")
     public WebElement continueButton;
 
     public  void login(WebDriver driver, String role) throws InterruptedException {

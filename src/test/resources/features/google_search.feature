@@ -19,7 +19,7 @@ Feature: Google Search Functionality Title verification
     When user types "Nadir Shafiyev" in the google search box and clicks enter
     Then user should see "Nadir Shafiyev - Google Search" in the Google title
 
-  @google_search
+  @google_search @smoke
   Scenario: Search functionality result title verification
     Given user is on Google search page
     When user types "Svetlana Grishina" in the google search box and clicks enter
