@@ -116,4 +116,5 @@ public class LoginStepDefs {
         loginPage.login2(credentials.get("username"), credentials.get("password"));
 
     }
+
 }

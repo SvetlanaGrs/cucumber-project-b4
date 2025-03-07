@@ -9,8 +9,8 @@
     <version>1.0-SNAPSHOT</version>
 
     <properties>
-        <maven.compiler.source>11</maven.compiler.source>
-        <maven.compiler.target>11</maven.compiler.target>
+        <maven.compiler.source>19</maven.compiler.source>
+        <maven.compiler.target>19</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
 
@@ -21,8 +21,8 @@
                 <artifactId>maven-surefire-plugin</artifactId>
                 <version>3.3.1</version>
                 <configuration>
-                    <parallel>methods</parallel>
-                    <threadCount>3</threadCount>
+                    <parallel>none</parallel>
+                    <threadCount>1</threadCount>
                     <testFailureIgnore>true</testFailureIgnore>
                     <useUnlimitedThreads>false</useUnlimitedThreads>
                     <perCoreThreadCount>false</perCoreThreadCount>
@@ -31,6 +31,30 @@
                     </includes>
                 </configuration>
             </plugin>
+
+
+            <plugin>
+                <groupId>net.masterthought</groupId>
+                <artifactId>maven-cucumber-reporting</artifactId>
+                <version>5.7.8</version>
+                <executions>
+                    <execution>
+                        <id>execution</id>
+                        <phase>verify</phase> <!-- 🔹 Changed from test to verify -->
+                        <goals>
+                            <goal>generate</goal>
+                        </goals>
+                        <configuration>
+                            <projectName>Cucumber HTML Reports</projectName>
+                            <outputDirectory>${project.build.directory}/cucumber-reports</outputDirectory> <!-- 🔹 Corrected Output Path -->
+                            <jsonFiles>
+                                <param>${project.build.directory}/json-reports/json-report.json</param> <!-- 🔹 Explicit JSON Report Path -->
+                            </jsonFiles>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+
         </plugins>
     </build>
 
@@ -83,6 +107,18 @@
             <groupId>org.apache.logging.log4j</groupId>
             <artifactId>log4j-api</artifactId>
             <version>2.23.1</version>
+        </dependency>
+
+        <dependency>
+            <groupId>tech.grasshopper</groupId>
+            <artifactId>extentreports-cucumber7-adapter</artifactId>
+            <version>1.14.0</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.aventstack</groupId>
+            <artifactId>extentreports</artifactId>
+            <version>5.1.1</version>
         </dependency>
 
 

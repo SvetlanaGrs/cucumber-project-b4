@@ -8,3 +8,4 @@ Feature: Demo how to upload json report to xray
     And user enters password for client
     And user click login button
     Then user should be able to see the home for client
+

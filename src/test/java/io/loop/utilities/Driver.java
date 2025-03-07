@@ -49,6 +49,13 @@ public class Driver {
                     driverPool.get().manage().window().maximize();
                     driverPool.get().manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
                     break;
+                case "headless":
+                    ChromeOptions options=new ChromeOptions();
+                    options.addArguments("--headless");
+                    driverPool.set(new ChromeDriver(options));
+                    driverPool.get().manage().window().maximize();
+                    driverPool.get().manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+                    break;
             }
 
         }
