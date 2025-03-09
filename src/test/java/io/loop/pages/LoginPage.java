@@ -24,8 +24,34 @@ public class LoginPage {
     @FindBy(xpath = "//button[@type='submit']")
     public WebElement loginButton;
 
-    @FindBy (xpath = "//button[@type='submit']")
+    @FindBy (xpath = "//span[.=' Continue ']")
     public WebElement continueButton;
+
+    public void insertField(String field, String input){
+        switch (field.toLowerCase().trim()){
+            case "username":
+                BrowserUtils.waitForVisibility(usernameInput,10).sendKeys(input);
+                break;
+            case "password":
+                BrowserUtils.waitForVisibility(passwordInput,10).sendKeys(input);
+                break;
+            default: throw new IllegalArgumentException("No such a field: " + field);
+        }
+    }
+
+    public void clickButton(String button){
+        switch (button.toLowerCase().trim()){
+            case "login":
+                BrowserUtils.waitForClickable(loginButton, 10).click();
+                break;
+            case "continue":
+               // BrowserUtils.waitForClickable(continueButton,10).click();
+                BrowserUtils.clickWithJS(continueButton);
+                break;
+            default: throw new IllegalArgumentException("Not such a button: " + button);
+
+        }
+    }
 
     public  void login(WebDriver driver, String role) throws InterruptedException {
         switch (role.toLowerCase()){
@@ -55,10 +81,8 @@ public class LoginPage {
 
         loginButton.click();
         if(role.toLowerCase().equals("client")){
-            Thread.sleep(3000);
             WebElement con = driver.findElement(By.xpath("//button[@type='submit']"));
             con.click();
-            Thread.sleep(3000);
         }
 
     }

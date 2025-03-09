@@ -6,7 +6,7 @@ import org.junit.runner.RunWith;
 
 @RunWith(Cucumber.class)
 @CucumberOptions(
-        plugin ={"pretty",
+        plugin ={//"pretty",
                 "html:target/html-reports/cucumber-report.html",
                 "json:target/json-reports/json-report.json",
                 "rerun:target/rerun.txt",
@@ -14,7 +14,7 @@ import org.junit.runner.RunWith;
         features = "C:/Users/advok/IdeaProjects/cucumber-project-b4/src/test/resources/features",
         glue ="io/loop/step_definitions",
         dryRun = false,
-        tags="@new",
+        tags="@wip",
         monochrome=true,
         publish = false
 )
