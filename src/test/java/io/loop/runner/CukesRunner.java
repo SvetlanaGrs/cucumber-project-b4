@@ -14,7 +14,7 @@ import org.junit.runner.RunWith;
         features = "C:/Users/advok/IdeaProjects/cucumber-project-b4/src/test/resources/features",
         glue ="io/loop/step_definitions",
         dryRun = false,
-        tags="@wip",
+        tags="@task2",
         monochrome=true,
         publish = false
 )

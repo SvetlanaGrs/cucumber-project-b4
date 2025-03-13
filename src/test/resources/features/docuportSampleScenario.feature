@@ -25,9 +25,11 @@ Feature: Docuport Sample Scenario
     @task2@wip
     Scenario: Practice click buttons on my uploads as a client
       Then user clicks "My uploads" button on "Left Navigate" page
-     # And user clicks "Upload documents" button on "My uploads" page
-     # And user inserts "C:\Users\advok\OneDrive\Desktop\example.txt" to "Upload file" field on "My uploads" page
-     # And user clicks "Upload" button on "My uploads" page
+      And user clicks "Upload documents" button on "My uploads" page
+      And user inserts "C:\Users\advok\OneDrive\Desktop\example.txt" to "Upload file" field on "My uploads" page
+      #If input type works you do not need below step
+      #And user clicks "Upload file" button on "My uploads" page
+      And user clicks "Upload" button on "My uploads" page
       Then user clicks "Search dropdown" button on "My uploads" page
       And user should see "There are no items to display." message on "My uploads" page
 

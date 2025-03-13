@@ -21,7 +21,7 @@ public class ProductSteps {
     @Given("User is on the HomePage")
     public void user_is_on_the_home_page() {
         Driver.getDriver().get(ConfigurationReader.getProperties("product.url"));
-       // Driver.getDriver().manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+       // Driver.getDriver().manage().timeouts().implicitlyWait(Integer.valueOf(ConfigurationReader.getProperties("timeouts")));
         LOG.info("User is on HomePage");
     }
     @Then("User should be able to see expected prices in the following product")
