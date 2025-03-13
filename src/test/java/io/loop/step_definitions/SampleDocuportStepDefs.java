@@ -13,6 +13,7 @@ import org.junit.Assert;
 import org.openqa.selenium.WindowType;
 import org.openqa.selenium.interactions.Actions;
 
+import java.awt.*;
 import java.util.Set;
 
 public class SampleDocuportStepDefs {
@@ -46,7 +47,7 @@ public class SampleDocuportStepDefs {
         }
     }
     @When("user clicks {string} button on {string} page")
-    public void user_clicks_button_on_page(String button, String page) throws InterruptedException {
+    public void user_clicks_button_on_page(String button, String page) throws AWTException {
         switch (page.toLowerCase().trim()){
             case "login", "choose account":
                 loginPage.clickButton(button);
@@ -54,7 +55,6 @@ public class SampleDocuportStepDefs {
                 break;
             case "left navigate":
                 leftNavigatePage.clickButton(button);
-                Thread.sleep(5000);
                 LOG.info(button+ " - was successfully clicked");
                 break;
             case "received docs":

@@ -40,7 +40,7 @@ public class GoogleSearchSteps {
             googleSearchPage.captcha.click();
         }
         Driver.getDriver().switchTo().defaultContent();
-        WebDriverWait wait = new WebDriverWait(Driver.getDriver(),Duration.ofSeconds(10));
+        WebDriverWait wait = new WebDriverWait(Driver.getDriver(),Duration.ofSeconds(Integer.valueOf(ConfigurationReader.getProperties("timeouts"))));
         wait.until(ExpectedConditions.titleIs("Loop Academy - Google Search"));
         //Thread.sleep(3000);
 
@@ -66,7 +66,7 @@ public class GoogleSearchSteps {
     }
     @Then("user should see {string} in the Google title")
     public void user_should_see_in_the_google_title(String expectedTitle) {
-        WebDriverWait wait = new WebDriverWait(Driver.getDriver(),Duration.ofSeconds(10));
+        WebDriverWait wait = new WebDriverWait(Driver.getDriver(),Duration.ofSeconds(Integer.valueOf(ConfigurationReader.getProperties("timeouts"))));
         wait.until(ExpectedConditions.titleIs(expectedTitle));
         //Thread.sleep(3000)
         String actualTitle = Driver.getDriver().getTitle();
@@ -80,7 +80,7 @@ public class GoogleSearchSteps {
 //            googleSearchPage.searchBox.clear();
 //            googleSearchPage.searchBox.sendKeys(item + Keys.ENTER);
 //            googleSearchPage.handleCaptcha(Driver.getDriver(), googleSearchPage.captcha);
-//            WebDriverWait wait = new WebDriverWait(Driver.getDriver(), Duration.ofSeconds(10));
+//            WebDriverWait wait = new WebDriverWait(Driver.getDriver(), Integer.valueOf(ConfigurationReader.getProperties("timeouts")));
 //            wait.until(ExpectedConditions.titleIs(item + " - Google Search"));
 //            assertEquals("Expected does not match with actual", item+" - Google Search",Driver.getDriver().getTitle());
 //
@@ -89,7 +89,7 @@ public class GoogleSearchSteps {
             googleSearchPage.searchBox.clear();
             googleSearchPage.searchBox.sendKeys(p + Keys.ENTER);
             googleSearchPage.handleCaptcha(Driver.getDriver(), googleSearchPage.captcha);
-            WebDriverWait wait = new WebDriverWait(Driver.getDriver(), Duration.ofSeconds(10));
+            WebDriverWait wait = new WebDriverWait(Driver.getDriver(), Duration.ofSeconds(Integer.valueOf(ConfigurationReader.getProperties("timeouts"))));
             wait.until(ExpectedConditions.titleIs(p + " - Google Search"));
             assertEquals("Expected does not match with actual", p +" - Google Search",Driver.getDriver().getTitle());
         });
