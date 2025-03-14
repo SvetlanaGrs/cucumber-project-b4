@@ -1,5 +1,2 @@
-09.03.2025 15:48:38 INFO  LoginStepDefs:61 - Home page is successfully displayed
-09.03.2025 15:48:38 INFO  SampleDocuportStepDefs:58 - My uploads - was successfully clicked
-09.03.2025 15:48:39 INFO  SampleDocuportStepDefs:66 - Upload documents - was successfully clicked
-09.03.2025 15:48:39 INFO  SampleDocuportStepDefs:39 - C:\Users\advok\OneDrive\Desktop\example.txt - was successfully sent to - Upload file
-09.03.2025 15:48:39 INFO  Hook:29 - ................FINISH AUTOMATION................LOOP CAMP
+13.03.2025 20:46:20 INFO  SampleDocuportStepDefs:58 - invitations - was successfully clicked
+13.03.2025 20:46:20 INFO  Hook:29 - ................FINISH AUTOMATION................LOOP CAMP

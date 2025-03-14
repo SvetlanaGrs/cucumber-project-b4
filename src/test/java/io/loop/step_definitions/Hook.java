@@ -27,7 +27,7 @@ public class Hook {
             scenario.attach(screenshot, "image/png", scenario.getName());
         }
         LOG.info("................FINISH AUTOMATION................LOOP CAMP");
-        //Driver.closeDriver();
+        Driver.closeDriver();
     }
 
    // @AfterStep
