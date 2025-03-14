@@ -27,6 +27,16 @@ public class LoginPage {
     @FindBy (xpath = "//span[.=' Continue ']")
     public WebElement continueButton;
 
+    @FindBy (xpath = "//h1[contains(text(),'Login')]")
+    public WebElement loginText;
+
+    @FindBy (xpath = "//div[@class='login-layout__intro--logo']//a//img")
+    public WebElement docuportText;
+
+    @FindBy (xpath = " //div[@class='d-modal__header']//div//h3")
+    public WebElement continueText;
+
+
     public void insertField(String field, String input){
         switch (field.toLowerCase().trim()){
             case "username":
